@@ -1,0 +1,16 @@
+{
+  "version": "2.5.0",
+  "summary": {
+    "title": "photo-sharing site",
+    "owner": "SHRAWAN  KUMAR",
+    "description": "The photo-sharing site allows users to upload and retrieve photos via the Internet. On a high level It consists of the following major components and interactions:\n1.User (external entity): Accesses site through browser/app.\n2.Web Front-End (process): Handles authentication, upload, and retrieval requests.\n3.Photo Storage (data store): Stores large photo files.\n4.Database (data store): Keeps user and photo metadata.\n5.Data Flows: Users upload/download photos (through HTTPS), metadata stored/retrieved from DB, photos stored/retrieved from storage.\n\nTrust Boundaries:\n1.Internet (User ↔ Web Front-End)\n2. Internal network (Web Front-End ↔ DB/Storage)",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [],
+    "diagramTop": 0,
+    "reviewer": "Aakash",
+    "threatTop": 0
+  }
+}
