@@ -26,8 +26,8 @@
         "cells": [
           {
             "position": {
-              "x": 80,
-              "y": 100
+              "x": 70,
+              "y": 130
             },
             "size": {
               "width": 112.5,
@@ -139,25 +139,21 @@
               "hasOpenThreats": false,
               "providesAuthentication": false,
               "threats": []
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
             "position": {
-              "x": 361,
-              "y": 160
+              "x": 480,
+              "y": 125
             },
             "size": {
-              "width": 60,
-              "height": 60
+              "width": 70,
+              "height": 70
             },
             "attrs": {
+              "text": {
+                "text": "Webserver"
+              },
               "body": {
                 "stroke": "#333333",
                 "strokeWidth": 1.5,
@@ -252,7 +248,7 @@
             "zIndex": 2,
             "data": {
               "type": "tm.Process",
-              "name": "Process",
+              "name": "Webserver",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -505,6 +501,52 @@
               "storesCredentials": false,
               "storesInventory": false,
               "threats": []
+            }
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Internet Trust Boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "labels": [
+              "Internet Trust Boundary"
+            ],
+            "id": "84052e17-fed1-4ab6-8476-a7abd14b91ac",
+            "source": {
+              "x": 290,
+              "y": -10
+            },
+            "target": {
+              "x": 300,
+              "y": 560
+            },
+            "vertices": [
+              {
+                "x": 290,
+                "y": 120
+              },
+              {
+                "x": 290,
+                "y": 150
+              }
+            ],
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
             }
           }
         ],
