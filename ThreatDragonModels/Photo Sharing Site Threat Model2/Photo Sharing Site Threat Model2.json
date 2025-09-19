@@ -1462,57 +1462,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Pages",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "Pages"
-            ],
-            "id": "3ccdc4ee-8f5d-4970-a500-6322642b2daf",
-            "source": {
-              "x": 2208,
-              "y": 213
-            },
-            "target": {
-              "cell": "857835eb-ee9b-41d3-965b-5e8a143b9809",
-              "port": "e60976a0-66cb-4003-b40d-31521050f661"
-            },
-            "vertices": [
-              {
-                "x": 2310,
-                "y": 180
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "user_auth_Request\n(SQL Query Calls)",
               "description": "",
               "outOfScope": false,
@@ -1635,6 +1584,7 @@
               "Data Flow"
             ],
             "id": "92c8b6cd-3b79-4080-b1b6-8834d5e5be96",
+            "parent": "b22b5c9d-3f50-4c8d-b2d1-78cfb49318d0",
             "source": {
               "cell": "b22b5c9d-3f50-4c8d-b2d1-78cfb49318d0",
               "port": "1d8582a5-cc82-4228-bd33-743cfddb2c7b"
@@ -1643,8 +1593,52 @@
               "cell": "b22b5c9d-3f50-4c8d-b2d1-78cfb49318d0",
               "port": "1d8582a5-cc82-4228-bd33-743cfddb2c7b"
             },
-            "vertices": [],
-            "parent": "b22b5c9d-3f50-4c8d-b2d1-78cfb49318d0"
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "ReadUserImageFile\n(Data)",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "ReadUserImageFile\n(Data)"
+            ],
+            "id": "4b7d27d0-a86d-4874-af35-78454b85b4a9",
+            "source": {
+              "x": 2253,
+              "y": -128
+            },
+            "target": {
+              "cell": "857835eb-ee9b-41d3-965b-5e8a143b9809",
+              "port": "e2826104-55ba-41dd-9af6-73a15e14a8e1"
+            }
           },
           {
             "shape": "flow",
@@ -1684,67 +1678,16 @@
             "id": "c0f6a9e2-335b-4436-ad1e-9e54fcdb1dc1",
             "source": {
               "cell": "857835eb-ee9b-41d3-965b-5e8a143b9809",
-              "port": "1090fe47-0470-42e0-9ac2-6ad7ce50646c"
-            },
-            "target": {
-              "cell": "b22b5c9d-3f50-4c8d-b2d1-78cfb49318d0",
-              "port": "71cd1971-9b44-4334-9486-3e97849340ca"
-            },
-            "vertices": [
-              {
-                "x": 2600,
-                "y": 200
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "Data Flow"
-            ],
-            "id": "22719fe5-18a8-4b80-a0e1-e92dac5c7a8d",
-            "source": {
-              "cell": "b22b5c9d-3f50-4c8d-b2d1-78cfb49318d0",
-              "port": "71cd1971-9b44-4334-9486-3e97849340ca"
-            },
-            "target": {
-              "cell": "857835eb-ee9b-41d3-965b-5e8a143b9809",
               "port": "e60976a0-66cb-4003-b40d-31521050f661"
             },
+            "target": {
+              "cell": "b22b5c9d-3f50-4c8d-b2d1-78cfb49318d0",
+              "port": "71cd1971-9b44-4334-9486-3e97849340ca"
+            },
             "vertices": [
               {
-                "x": 2430,
-                "y": 270
+                "x": 2400,
+                "y": 230
               }
             ]
           },
@@ -1889,6 +1832,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 12,
             "ports": {
               "groups": {
                 "top": {
@@ -1972,7 +1916,6 @@
               ]
             },
             "id": "33032252-a84f-4489-98c5-515fd659914f",
-            "zIndex": 12,
             "data": {
               "type": "tm.Actor",
               "name": "Users",
@@ -2006,6 +1949,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 13,
             "ports": {
               "groups": {
                 "top": {
@@ -2089,7 +2033,6 @@
               ]
             },
             "id": "857835eb-ee9b-41d3-965b-5e8a143b9809",
-            "zIndex": 13,
             "data": {
               "type": "tm.Process",
               "name": "WebAppProcess",
@@ -2129,6 +2072,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 14,
             "ports": {
               "groups": {
                 "top": {
@@ -2212,7 +2156,6 @@
               ]
             },
             "id": "30ccb094-50ef-4006-8b61-0b673aa067f1",
-            "zIndex": 14,
             "data": {
               "type": "tm.Store",
               "name": "user auth database",
@@ -2231,8 +2174,8 @@
           },
           {
             "position": {
-              "x": 2095,
-              "y": 190
+              "x": 2140,
+              "y": -160
             },
             "size": {
               "width": 112.5,
@@ -2250,6 +2193,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 15,
             "ports": {
               "groups": {
                 "top": {
@@ -2333,7 +2277,6 @@
               ]
             },
             "id": "ea82c335-b160-4450-8eca-414e3cf4ef49",
-            "zIndex": 15,
             "data": {
               "type": "tm.Actor",
               "name": "webPages\non Disk",
@@ -2348,8 +2291,8 @@
           },
           {
             "position": {
-              "x": 2470,
-              "y": 349.99999999999994
+              "x": 2270,
+              "y": 409.99999999999994
             },
             "size": {
               "width": 120,
@@ -2370,6 +2313,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 16,
             "ports": {
               "groups": {
                 "top": {
@@ -2453,7 +2397,6 @@
               ]
             },
             "id": "b22b5c9d-3f50-4c8d-b2d1-78cfb49318d0",
-            "zIndex": 16,
             "data": {
               "type": "tm.Store",
               "name": "Photo Storage",
