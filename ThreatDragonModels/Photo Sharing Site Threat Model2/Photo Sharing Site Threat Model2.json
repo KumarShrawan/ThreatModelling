@@ -536,38 +536,6 @@
             }
           },
           {
-            "shape": "trust-boundary-curve",
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
-              "name": "Internet Trust Boundary",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
-            "labels": [
-              "Internet Trust Boundary"
-            ],
-            "id": "84052e17-fed1-4ab6-8476-a7abd14b91ac",
-            "source": {
-              "x": 290,
-              "y": -80
-            },
-            "target": {
-              "x": 300,
-              "y": 560
-            },
-            "vertices": [
-              {
-                "x": 290,
-                "y": 310
-              }
-            ]
-          },
-          {
             "shape": "flow",
             "attrs": {
               "line": {
@@ -771,7 +739,7 @@
             "vertices": [
               {
                 "x": 410,
-                "y": 210
+                "y": 240
               }
             ]
           },
@@ -821,8 +789,12 @@
             },
             "vertices": [
               {
-                "x": 430,
-                "y": 270
+                "x": 470,
+                "y": 290
+              },
+              {
+                "x": 340,
+                "y": 330
               }
             ]
           },
@@ -1120,7 +1092,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "fetch_userMetadata",
+              "name": "getUserMetadata",
               "description": "Application retrieves the image bytes from storage to serve to the user.\"",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1133,7 +1105,7 @@
               "threats": []
             },
             "labels": [
-              "fetch_userMetadata"
+              "getUserMetadata"
             ],
             "id": "cb24ae06-4b71-44f6-a08e-5b2c1ee56652",
             "source": {
@@ -1150,6 +1122,162 @@
                 "y": 100
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "getUserMetaDataResponse",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "getUserMetaDataResponse"
+            ],
+            "id": "dceeb303-dda7-4b28-a386-38e644f98dc4",
+            "source": {
+              "x": 1140,
+              "y": 40
+            },
+            "target": {
+              "cell": "de06b6e8-dab7-45b2-bf03-1499262231d2",
+              "port": "e7664906-ca34-454c-8624-e1c10aa4d18e"
+            },
+            "vertices": [
+              {
+                "x": 1080,
+                "y": 180
+              },
+              {
+                "x": 950,
+                "y": 160
+              },
+              {
+                "x": 940,
+                "y": 160
+              }
+            ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Internet Trust Boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "labels": [
+              "Internet Trust Boundary"
+            ],
+            "id": "84052e17-fed1-4ab6-8476-a7abd14b91ac",
+            "source": {
+              "x": 390,
+              "y": -120
+            },
+            "target": {
+              "x": 400,
+              "y": 520
+            },
+            "vertices": [
+              {
+                "x": 390,
+                "y": 270
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": "4 3"
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "paySubscriptionFee",
+              "description": "Pay memebership fee, charges based on disk space.",
+              "outOfScope": true,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "Reference to question - We also assume that the users pay for the service of storing the photos that the site charges them for; however, you need not worry about the service’s accounting and customer service functions for this question.",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "paySubscriptionFee"
+            ],
+            "id": "ffb77f9b-e48e-491a-9ba7-c447c8ae7805",
+            "source": {
+              "x": 70,
+              "y": 190
+            },
+            "target": {
+              "cell": "20fe98f0-80cc-472c-bf51-58c46e9174b6",
+              "port": "d21ee7a7-0cc5-40c5-91a0-fa933ee1018f"
+            },
+            "vertices": [
+              {
+                "x": 90,
+                "y": 300
+              },
+              {
+                "x": 200,
+                "y": 540
+              }
+            ],
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            }
           },
           {
             "position": {
