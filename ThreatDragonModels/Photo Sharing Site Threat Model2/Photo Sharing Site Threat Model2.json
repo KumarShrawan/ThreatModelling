@@ -45,6 +45,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 1,
             "ports": {
               "groups": {
                 "top": {
@@ -128,7 +129,6 @@
               ]
             },
             "id": "10d55226-0b85-48a7-94bd-f4dc27ad9b4e",
-            "zIndex": 1,
             "data": {
               "type": "tm.Actor",
               "name": "User",
@@ -162,6 +162,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -245,7 +246,6 @@
               ]
             },
             "id": "20fe98f0-80cc-472c-bf51-58c46e9174b6",
-            "zIndex": 2,
             "data": {
               "type": "tm.Process",
               "name": "Webserver",
@@ -271,6 +271,9 @@
               "height": 60
             },
             "attrs": {
+              "text": {
+                "text": "User Database"
+              },
               "topLine": {
                 "strokeWidth": 1.5,
                 "strokeDasharray": null
@@ -282,6 +285,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 3,
             "ports": {
               "groups": {
                 "top": {
@@ -365,10 +369,9 @@
               ]
             },
             "id": "2a4a1c0e-8649-4f3f-afcf-6e764c581976",
-            "zIndex": 3,
             "data": {
               "type": "tm.Store",
-              "name": "Store",
+              "name": "User Database",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -392,6 +395,9 @@
               "height": 60
             },
             "attrs": {
+              "text": {
+                "text": "Photo Storage"
+              },
               "topLine": {
                 "strokeWidth": 1.5,
                 "strokeDasharray": null
@@ -403,6 +409,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 4,
             "ports": {
               "groups": {
                 "top": {
@@ -486,11 +493,10 @@
               ]
             },
             "id": "28f29997-afdf-4f64-b5a1-ddd60b65a6c1",
-            "zIndex": 4,
             "data": {
               "type": "tm.Store",
-              "name": "Store",
-              "description": "",
+              "name": "Photo Storage",
+              "description": "High Capacity Disk Array",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -501,6 +507,13 @@
               "storesCredentials": false,
               "storesInventory": false,
               "threats": []
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -531,23 +544,9 @@
             "vertices": [
               {
                 "x": 290,
-                "y": 120
-              },
-              {
-                "x": 290,
-                "y": 150
+                "y": 220
               }
-            ],
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
-              ],
-              "name": null
-            }
+            ]
           }
         ],
         "description": "Photo Sharing Webapp"
