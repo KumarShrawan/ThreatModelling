@@ -143,12 +143,12 @@
           },
           {
             "position": {
-              "x": 490,
-              "y": 40
+              "x": 530,
+              "y": 10
             },
             "size": {
               "width": 70,
-              "height": 70
+              "height": 90
             },
             "attrs": {
               "text": {
@@ -248,7 +248,7 @@
             "id": "20fe98f0-80cc-472c-bf51-58c46e9174b6",
             "data": {
               "type": "tm.Process",
-              "name": "Webserver",
+              "name": "",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -507,13 +507,6 @@
               "storesCredentials": false,
               "storesInventory": false,
               "threats": []
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -568,7 +561,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Login Credentials",
+              "name": "Authentication Request",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -581,7 +574,7 @@
               "threats": []
             },
             "labels": [
-              "Login Credentials"
+              "Authentication Request"
             ],
             "id": "ea14a8cf-11af-4454-a232-0cd0102e53ae",
             "source": {
@@ -594,15 +587,66 @@
             },
             "vertices": [
               {
-                "x": 180,
+                "x": 290,
                 "y": 22
               }
             ]
           },
           {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Authentication Result",
+              "description": "Session token or authentication success/failure message",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Authentication Result"
+            ],
+            "id": "b7b76e11-12ba-4884-b324-d2f91fe0f09f",
+            "source": {
+              "x": 510,
+              "y": 110
+            },
+            "target": {
+              "cell": "10d55226-0b85-48a7-94bd-f4dc27ad9b4e",
+              "port": "f7f822da-f8f8-48b9-b9a5-ed5fee579279"
+            },
+            "vertices": [
+              {
+                "x": 360,
+                "y": 190
+              }
+            ]
+          },
+          {
             "position": {
-              "x": 460,
-              "y": 10
+              "x": 500,
+              "y": -10.0000000000001
             },
             "size": {
               "width": 130,
@@ -610,7 +654,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Web Server"
+                "text": ""
               },
               "body": {
                 "stroke": "#333333",
@@ -706,7 +750,7 @@
             "id": "de06b6e8-dab7-45b2-bf03-1499262231d2",
             "data": {
               "type": "tm.Process",
-              "name": "Web Server",
+              "name": "",
               "description": "Handles uploads, downloads, auth checks, and serves content",
               "outOfScope": false,
               "isTrustBoundary": false,
