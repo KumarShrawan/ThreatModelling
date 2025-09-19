@@ -561,57 +561,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Authentication Request",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "Authentication Request"
-            ],
-            "id": "ea14a8cf-11af-4454-a232-0cd0102e53ae",
-            "source": {
-              "x": 130,
-              "y": 130
-            },
-            "target": {
-              "x": 490,
-              "y": 22
-            },
-            "vertices": [
-              {
-                "x": 290,
-                "y": 22
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "Authentication Result",
               "description": "Session token or authentication success/failure message",
               "outOfScope": false,
@@ -663,6 +612,57 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
+              "name": "Authentication Request",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Authentication Request"
+            ],
+            "id": "ea14a8cf-11af-4454-a232-0cd0102e53ae",
+            "source": {
+              "x": 150,
+              "y": 130
+            },
+            "target": {
+              "x": 510,
+              "y": 22
+            },
+            "vertices": [
+              {
+                "x": 310,
+                "y": 22
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
               "name": "PhotoUploadRequest",
               "description": "User requests to upload a photo file",
               "outOfScope": false,
@@ -691,13 +691,123 @@
               {
                 "x": 390,
                 "y": 160
+              },
+              {
+                "x": 500,
+                "y": 140
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Photo Retrieval Request",
+              "description": "The requested image file is sent to the user.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Photo Retrieval Request"
+            ],
+            "id": "3a070330-2dfc-4997-8eff-07d3f7ad1b5c",
+            "source": {
+              "x": 560,
+              "y": 120
+            },
+            "target": {
+              "cell": "10d55226-0b85-48a7-94bd-f4dc27ad9b4e",
+              "port": "20f3cd80-a056-4bc4-bbf9-88e0850a3c19"
+            },
+            "vertices": [
+              {
+                "x": 410,
+                "y": 210
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Data Flow"
+            ],
+            "id": "56e217c9-a6c2-4d22-9d7d-cfc900801201",
+            "source": {
+              "x": 111,
+              "y": 190
+            },
+            "target": {
+              "cell": "20fe98f0-80cc-472c-bf51-58c46e9174b6",
+              "port": "7174c93c-9e54-4948-92e3-af41f9dd0690"
+            },
+            "vertices": [
+              {
+                "x": 430,
+                "y": 330
+              },
+              {
+                "x": 610,
+                "y": 200
               }
             ]
           },
           {
             "position": {
               "x": 500,
-              "y": -10.0000000000001
+              "y": -20
             },
             "size": {
               "width": 130,
