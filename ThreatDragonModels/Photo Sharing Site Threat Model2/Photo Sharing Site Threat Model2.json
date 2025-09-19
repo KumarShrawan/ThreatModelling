@@ -941,7 +941,7 @@
             },
             "vertices": [
               {
-                "x": 960,
+                "x": 840,
                 "y": 30
               }
             ]
@@ -1264,20 +1264,69 @@
                 "y": 300
               },
               {
-                "x": 200,
-                "y": 540
+                "x": 240,
+                "y": 470
+              },
+              {
+                "x": 580,
+                "y": 320
               }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": "4 3"
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "paySubscriptionFeeResponse",
+              "description": "Response after payment is processed.",
+              "outOfScope": true,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "paySubscriptionFeeResponse"
             ],
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
-              ],
-              "name": null
-            }
+            "id": "5a3700d7-5fd2-4ba3-8fbe-13c6536e4181",
+            "source": {
+              "x": 612,
+              "y": 100
+            },
+            "target": {
+              "cell": "10d55226-0b85-48a7-94bd-f4dc27ad9b4e",
+              "port": "f413ab5c-2c44-4da4-bcd9-038f40caed39"
+            },
+            "vertices": [
+              {
+                "x": 650,
+                "y": 350
+              },
+              {
+                "x": 520,
+                "y": 590
+              }
+            ]
           },
           {
             "position": {
