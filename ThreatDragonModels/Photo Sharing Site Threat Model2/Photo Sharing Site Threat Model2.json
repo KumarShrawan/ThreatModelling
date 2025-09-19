@@ -272,7 +272,7 @@
             },
             "attrs": {
               "text": {
-                "text": "User Database"
+                "text": "Auth Database"
               },
               "topLine": {
                 "strokeWidth": 1.5,
@@ -371,7 +371,7 @@
             "id": "2a4a1c0e-8649-4f3f-afcf-6e764c581976",
             "data": {
               "type": "tm.Store",
-              "name": "User Database",
+              "name": "Auth Database",
               "description": "Database – Stores User data, Credentials and User Metadata ",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -496,7 +496,7 @@
             "data": {
               "type": "tm.Store",
               "name": "Photo Storage",
-              "description": "High Capacity Disk Array",
+              "description": "High Capacity Disk Array, Stores original photos, thumbnails, and metadata references",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -507,6 +507,13 @@
               "storesCredentials": false,
               "storesInventory": false,
               "threats": []
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
