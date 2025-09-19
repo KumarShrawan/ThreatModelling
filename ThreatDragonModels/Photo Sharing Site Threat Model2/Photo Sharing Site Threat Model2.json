@@ -769,8 +769,8 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
+              "name": "Photo Retrieval Response",
+              "description": "The requested image file is sent to the user.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -782,25 +782,21 @@
               "threats": []
             },
             "labels": [
-              "Data Flow"
+              "Photo Retrieval Response"
             ],
-            "id": "56e217c9-a6c2-4d22-9d7d-cfc900801201",
+            "id": "005166b9-5a76-441d-a471-258d4cf96b9e",
             "source": {
-              "x": 111,
-              "y": 190
+              "x": 600,
+              "y": 100
             },
             "target": {
-              "cell": "20fe98f0-80cc-472c-bf51-58c46e9174b6",
-              "port": "7174c93c-9e54-4948-92e3-af41f9dd0690"
+              "cell": "10d55226-0b85-48a7-94bd-f4dc27ad9b4e",
+              "port": "20f3cd80-a056-4bc4-bbf9-88e0850a3c19"
             },
             "vertices": [
               {
                 "x": 430,
-                "y": 330
-              },
-              {
-                "x": 610,
-                "y": 200
+                "y": 270
               }
             ]
           },
