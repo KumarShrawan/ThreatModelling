@@ -1,158 +1,140 @@
 {
-  "$schema": "https://threatdragon.org/schema/v2.5.0/tm.json",
-  "title": "Photo-Sharing Site - Context Diagram",
-  "owner": "Security Team",
-  "description": "High-level DFD for photo upload and retrieval functions. Network assets are out of scope per instructions.",
-  "diagram": {
-    "name": "Level 1 - System Context",
-    "diagramType": "DFD",
-    "elements": [
-      // ===== EXTERNAL ENTITIES =====
+  "threatmodel": {
+    "title": "Photo Sharing Site - Upload/Store/Retrieve (Threat Dragon import)",
+    "description": "DFD for a simple photo-sharing site (upload, store, retrieve) with STRIDE annotations. Import this JSON into OWASP Threat Dragon v2.5.0 and adjust layout as needed.",
+    "version": "2.5.0",
+    "nodes": [
       {
-        "name": "User",
-        "type": "entity",
-        "description": "An end-user of the photo-sharing service.",
-        "position": {"x": 100, "y": 300}
+        "id": "actor_user",
+        "type": "external_entity",
+        "title": "User",
+        "description": "End user using web or mobile client",
+        "x": 40,
+        "y": 40,
+        "width": 160,
+        "height": 80
       },
       {
-        "name": "Payment Processor",
-        "type": "entity",
-        "description": "External system handling billing (Out of Scope).",
-        "position": {"x": 1100, "y": 100}
-      },
-
-      // ===== PROCESSES =====
-      {
-        "name": "Web Application",
+        "id": "process_web_api",
         "type": "process",
-        "description": "The main application handling user interactions, authentication, and business logic for photos.",
-        "position": {"x": 500, "y": 300}
-      },
-
-      // ===== DATA STORES =====
-      {
-        "name": "User Database",
-        "type": "dataStore",
-        "description": "Stores user credentials, metadata, and profile information.",
-        "position": {"x": 500, "y": 100}
+        "title": "Web Server / API",
+        "description": "Handles uploads, downloads, auth checks, and serves content",
+        "x": 260,
+        "y": 40,
+        "width": 220,
+        "height": 100
       },
       {
-        "name": "Photo Storage",
-        "type": "dataStore",
-        "description": "Stores the actual image files uploaded by users.",
-        "position": {"x": 500, "y": 500}
-      },
-
-      // ===== DATA FLOWS =====
-      // Flows between User and Web Application
-      {
-        "name": "Login Credentials",
-        "type": "flow",
-        "description": "User sends username and password (over HTTPS).",
-        "source": "User",
-        "destination": "Web Application",
-        "position": null
+        "id": "process_image_handler",
+        "type": "process",
+        "title": "Image Handler",
+        "description": "Validates, transcodes, thumbnails, and sanitizes images in an isolated worker",
+        "x": 540,
+        "y": 40,
+        "width": 200,
+        "height": 100
       },
       {
-        "name": "Authentication Result",
-        "type": "flow",
-        "description": "Session token or authentication success/failure message.",
-        "source": "Web Application",
-        "destination": "User",
-        "position": null
+        "id": "datastore_auth",
+        "type": "data_store",
+        "title": "Auth Database",
+        "description": "Stores user credentials, sessions, and auth metadata",
+        "x": 260,
+        "y": 180,
+        "width": 220,
+        "height": 100
       },
       {
-        "name": "Photo Upload Request",
-        "type": "flow",
-        "description": "User requests to upload a photo file (multipart form data).",
-        "source": "User",
-        "destination": "Web Application",
-        "position": null
-      },
-      {
-        "name": "Upload Result",
-        "type": "flow",
-        "description": "Success or failure confirmation of the upload.",
-        "source": "Web Application",
-        "destination": "User",
-        "position": null
-      },
-      {
-        "name": "Photo Retrieval Request",
-        "type": "flow",
-        "description": "User requests to view or download a photo.",
-        "source": "User",
-        "destination": "Web Application",
-        "position": null
-      },
-      {
-        "name": "Photo Data",
-        "type": "flow",
-        "description": "The requested image file is sent to the user.",
-        "source": "Web Application",
-        "destination": "User",
-        "position": null
-      },
-
-      // Flows between Web Application and Data Stores
-      {
-        "name": "Query Credentials",
-        "type": "flow",
-        "description": "Application queries the DB to validate user login.",
-        "source": "Web Application",
-        "destination": "User Database",
-        "position": null
-      },
-      {
-        "name": "Query Results",
-        "type": "flow",
-        "description": "Database returns the user record (hashed PW, profile data).",
-        "source": "User Database",
-        "destination": "Web Application",
-        "position": null
-      },
-      {
-        "name": "Store Photo Metadata",
-        "type": "flow",
-        "description": "Application saves photo title, description, owner, location, etc.",
-        "source": "Web Application",
-        "destination": "User Database",
-        "position": null
-      },
-      {
-        "name": "Write Image File",
-        "type": "flow",
-        "description": "Application saves the uploaded image bytes to persistent storage.",
-        "source": "Web Application",
-        "destination": "Photo Storage",
-        "position": null
-      },
-      {
-        "name": "Read Image File",
-        "type": "flow",
-        "description": "Application retrieves the image bytes from storage to serve to the user.",
-        "source": "Photo Storage",
-        "destination": "Web Application",
-        "position": null
-      },
-      {
-        "name": "Query Photo Metadata",
-        "type": "flow",
-        "description": "Application queries for the user's photos and their data to display in the gallery.",
-        "source": "Web Application",
-        "destination": "User Database",
-        "position": null
-      },
-
-      // Out-of-Scope Flow (for context)
-      {
-        "name": "Billing Webhook",
-        "type": "flow",
-        "description": "Out of Scope: Notification of successful payment.",
-        "source": "Payment Processor",
-        "destination": "Web Application",
-        "position": null
+        "id": "datastore_photos",
+        "type": "data_store",
+        "title": "Photo Storage (Object Store)",
+        "description": "Stores original photos, thumbnails, and metadata references",
+        "x": 540,
+        "y": 180,
+        "width": 220,
+        "height": 100
       }
-    ]
+    ],
+    "dataFlows": [
+      {
+        "id": "flow_upload",
+        "title": "Upload photo (HTTP/S)",
+        "source": "actor_user",
+        "target": "process_web_api",
+        "description": "User uploads photo + metadata to Web Server/API",
+        "stride": ["S","T","I","D","E"],
+        "notes": "Threats: Spoofing (stolen tokens), Tampering (crafted payloads), Info disclosure (MITM if TLS broken), DoS (storage exhaustion), Elevation (exploit upload parsing)"
+      },
+      {
+        "id": "flow_auth_query",
+        "title": "AuthN/AuthZ request",
+        "source": "process_web_api",
+        "target": "datastore_auth",
+        "description": "Web server queries auth DB to authenticate and authorize requests",
+        "stride": ["S","T","R","I"],
+        "notes": "Threats: forged requests, credential exposure, incomplete auditing"
+      },
+      {
+        "id": "flow_to_image_handler",
+        "title": "Validated image -> Image Handler",
+        "source": "process_web_api",
+        "target": "process_image_handler",
+        "description": "Web server forwards validated image for processing (thumbnailing, sanitization)",
+        "stride": ["T","D","E"],
+        "notes": "Threats: image parser RCE, decompression bombs, privilege escalation"
+      },
+      {
+        "id": "flow_store_photo",
+        "title": "Store validated photo",
+        "source": "process_image_handler",
+        "target": "datastore_photos",
+        "description": "Image handler stores resulting objects in photo storage/object store",
+        "stride": ["I","T","E","D"],
+        "notes": "Threats: misconfigured storage (public exposure), object overwrite, exfiltration"
+      },
+      {
+        "id": "flow_retrieve_request",
+        "title": "Retrieve photo request",
+        "source": "actor_user",
+        "target": "process_web_api",
+        "description": "User requests to view/download a photo",
+        "stride": ["S","I","T","D"],
+        "notes": "Threats: unauthorized access (IDOR), interception, cache leakage"
+      },
+      {
+        "id": "flow_fetch_photo",
+        "title": "Fetch photo from storage",
+        "source": "process_web_api",
+        "target": "datastore_photos",
+        "description": "Web server fetches photo object to serve to user (or returns signed URL)",
+        "stride": ["I","T"],
+        "notes": "Threats: signed URL theft, CDN cache leaks, tampering"
+      },
+      {
+        "id": "flow_return_photo",
+        "title": "Return photo (HTTP/S)",
+        "source": "process_web_api",
+        "target": "actor_user",
+        "description": "Web server returns photo to user over TLS",
+        "stride": ["S","T","I","D","E"],
+        "notes": "Threats: session theft, tampering in transit, leakage, DoS, privilege misuse"
+      }
+    ],
+    "trustBoundaries": [
+      {
+        "id": "tb_internet",
+        "title": "Internet ↔ Web Server",
+        "description": "Boundary between external users and the public-facing web server",
+        "x": 20,
+        "y": 20,
+        "width": 760,
+        "height": 320
+      }
+    ],
+    "metadata": {
+      "createdBy": "ChatGPT (generated)",
+      "created": "2025-09-19T13:00:00Z",
+      "tags": ["photo-sharing","DFD","STRIDE","homework"]
+    }
   }
 }
