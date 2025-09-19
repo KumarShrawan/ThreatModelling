@@ -93,7 +93,7 @@
         "position": null
       },
 
-      // Flows between Web Application and Data Stores
+     
       {
         "name": "Query Credentials",
         "type": "flow",
