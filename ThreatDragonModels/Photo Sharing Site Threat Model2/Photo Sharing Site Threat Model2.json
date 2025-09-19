@@ -943,7 +943,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "WriteImageFIle",
+              "name": "WriteUserImageFIle",
               "description": "Application saves the uploaded image bytes to persistent storage",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -956,7 +956,7 @@
               "threats": []
             },
             "labels": [
-              "WriteImageFIle"
+              "WriteUserImageFIle"
             ],
             "id": "f489effc-6878-4438-9e24-2305382c40d5",
             "source": {
@@ -975,6 +975,65 @@
               {
                 "x": 940,
                 "y": 220
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "ReadUserImageFIle",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "ReadUserImageFIle"
+            ],
+            "id": "d49a2e76-5794-49d6-a4de-6f88f3bcdb5a",
+            "source": {
+              "cell": "28f29997-afdf-4f64-b5a1-ddd60b65a6c1",
+              "port": "3fba20ee-c628-42c9-b8e0-cba64fe1efba"
+            },
+            "target": {
+              "cell": "20fe98f0-80cc-472c-bf51-58c46e9174b6",
+              "port": "7174c93c-9e54-4948-92e3-af41f9dd0690"
+            },
+            "vertices": [
+              {
+                "x": 1070,
+                "y": 330
+              },
+              {
+                "x": 880,
+                "y": 303
+              },
+              {
+                "x": 760,
+                "y": 230
               }
             ]
           },
