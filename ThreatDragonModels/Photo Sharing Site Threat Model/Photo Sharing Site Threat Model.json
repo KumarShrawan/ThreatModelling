@@ -6,11 +6,180 @@
     "description": "The photo-sharing site allows users to upload and retrieve photos via the Internet. On a high level It consists of the following major components and interactions:\n1.User (external entity): Accesses site through browser/app.\n2.Web Front-End (process): Handles authentication, upload, and retrieval requests.\n3.Photo Storage (data store): Stores large photo files.\n4.Database (data store): Keeps user and photo metadata.\n5.Data Flows: Users upload/download photos (through HTTPS), metadata stored/retrieved from DB, photos stored/retrieved from storage.\n\nTrust Boundaries:\n1.Internet (User ↔ Web Front-End)\n2. Internal network (Web Front-End ↔ DB/Storage)",
     "id": 0
   },
-  "detail": {
-    "contributors": [],
-    "diagrams": [],
-    "diagramTop": 0,
-    "reviewer": "Aakash Sivashanmugam",
-    "threatTop": 0
+   "detail": {
+    "diagrams": [
+      {
+        "name": "Level 1 - System Context",
+        "id": 1,
+        "thumbnail": "",
+        "diagramType": "DFD",
+        "elements": [
+          // ===== EXTERNAL ENTITIES =====
+          {
+            "name": "User",
+            "id": 1,
+            "type": "entity",
+            "description": "An end-user of the photo-sharing service.",
+            "position": {"x": 100, "y": 300}
+          },
+          {
+            "name": "Payment Processor",
+            "id": 2,
+            "type": "entity",
+            "description": "External system handling billing (Out of Scope).",
+            "position": {"x": 1100, "y": 100}
+          },
+
+          // ===== PROCESSES =====
+          {
+            "name": "Web Application",
+            "id": 3,
+            "type": "process",
+            "description": "The main application handling user interactions, authentication, and business logic for photos.",
+            "position": {"x": 500, "y": 300}
+          },
+
+          // ===== DATA STORES =====
+          {
+            "name": "User Database",
+            "id": 4,
+            "type": "dataStore",
+            "description": "Stores user credentials, metadata, and profile information.",
+            "position": {"x": 500, "y": 100}
+          },
+          {
+            "name": "Photo Storage",
+            "id": 5,
+            "type": "dataStore",
+            "description": "Stores the actual image files uploaded by users.",
+            "position": {"x": 500, "y": 500}
+          },
+
+          // ===== DATA FLOWS =====
+          // Flows between User and Web Application
+          {
+            "name": "Login Credentials",
+            "id": 6,
+            "type": "flow",
+            "description": "User sends username and password (over HTTPS).",
+            "source": {"id": 1, "type": "entity"},
+            "destination": {"id": 3, "type": "process"},
+            "position": null
+          },
+          {
+            "name": "Authentication Result",
+            "id": 7,
+            "type": "flow",
+            "description": "Session token or authentication success/failure message.",
+            "source": {"id": 3, "type": "process"},
+            "destination": {"id": 1, "type": "entity"},
+            "position": null
+          },
+          {
+            "name": "Photo Upload Request",
+            "id": 8,
+            "type": "flow",
+            "description": "User requests to upload a photo file (multipart form data).",
+            "source": {"id": 1, "type": "entity"},
+            "destination": {"id": 3, "type": "process"},
+            "position": null
+          },
+          {
+            "name": "Upload Result",
+            "id": 9,
+            "type": "flow",
+            "description": "Success or failure confirmation of the upload.",
+            "source": {"id": 3, "type": "process"},
+            "destination": {"id": 1, "type": "entity"},
+            "position": null
+          },
+          {
+            "name": "Photo Retrieval Request",
+            "id": 10,
+            "type": "flow",
+            "description": "User requests to view or download a photo.",
+            "source": {"id": 1, "type": "entity"},
+            "destination": {"id": 3, "type": "process"},
+            "position": null
+          },
+          {
+            "name": "Photo Data",
+            "id": 11,
+            "type": "flow",
+            "description": "The requested image file is sent to the user.",
+            "source": {"id": 3, "type": "process"},
+            "destination": {"id": 1, "type": "entity"},
+            "position": null
+          },
+
+          // Flows between Web Application and Data Stores
+          {
+            "name": "Query Credentials",
+            "id": 12,
+            "type": "flow",
+            "description": "Application queries the DB to validate user login.",
+            "source": {"id": 3, "type": "process"},
+            "destination": {"id": 4, "type": "dataStore"},
+            "position": null
+          },
+          {
+            "name": "Query Results",
+            "id": 13,
+            "type": "flow",
+            "description": "Database returns the user record (hashed PW, profile data).",
+            "source": {"id": 4, "type": "dataStore"},
+            "destination": {"id": 3, "type": "process"},
+            "position": null
+          },
+          {
+            "name": "Store Photo Metadata",
+            "id": 14,
+            "type": "flow",
+            "description": "Application saves photo title, description, owner, location, etc.",
+            "source": {"id": 3, "type": "process"},
+            "destination": {"id": 4, "type": "dataStore"},
+            "position": null
+          },
+          {
+            "name": "Write Image File",
+            "id": 15,
+            "type": "flow",
+            "description": "Application saves the uploaded image bytes to persistent storage.",
+            "source": {"id": 3, "type": "process"},
+            "destination": {"id": 5, "type": "dataStore"},
+            "position": null
+          },
+          {
+            "name": "Read Image File",
+            "id": 16,
+            "type": "flow",
+            "description": "Application retrieves the image bytes from storage to serve to the user.",
+            "source": {"id": 5, "type": "dataStore"},
+            "destination": {"id": 3, "type": "process"},
+            "position": null
+          },
+          {
+            "name": "Query Photo Metadata",
+            "id": 17,
+            "type": "flow",
+            "description": "Application queries for the user's photos and their data to display in the gallery.",
+            "source": {"id": 3, "type": "process"},
+            "destination": {"id": 4, "type": "dataStore"},
+            "position": null
+          },
+
+          // Out-of-Scope Flow (for context)
+          {
+            "name": "Billing Webhook",
+            "id": 18,
+            "type": "flow",
+            "description": "Out of Scope: Notification of successful payment.",
+            "source": {"id": 2, "type": "entity"},
+            "destination": {"id": 3, "type": "process"},
+            "position": null
+          }
+        ]
+      }
+    ]
   }
 }
