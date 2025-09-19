@@ -132,7 +132,7 @@
             "data": {
               "type": "tm.Actor",
               "name": "User",
-              "description": "",
+              "description": "End user using web or mobile client",
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -594,7 +594,7 @@
           },
           {
             "position": {
-              "x": 470,
+              "x": 460,
               "y": 10
             },
             "size": {
@@ -603,7 +603,7 @@
             },
             "attrs": {
               "text": {
-                "text": ""
+                "text": "Web Server"
               },
               "body": {
                 "stroke": "#333333",
@@ -699,8 +699,8 @@
             "id": "de06b6e8-dab7-45b2-bf03-1499262231d2",
             "data": {
               "type": "tm.Process",
-              "name": "",
-              "description": "",
+              "name": "Web Server",
+              "description": "Handles uploads, downloads, auth checks, and serves content",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
