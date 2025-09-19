@@ -7,7 +7,7 @@
     "name": "Level 1 - System Context",
     "diagramType": "DFD",
     "elements": [
-      // ===== EXTERNAL ENTITIES =====
+     
       {
         "name": "User",
         "type": "entity",
@@ -21,7 +21,7 @@
         "position": {"x": 1100, "y": 100}
       },
 
-      // ===== PROCESSES =====
+    
       {
         "name": "Web Application",
         "type": "process",
@@ -29,7 +29,7 @@
         "position": {"x": 500, "y": 300}
       },
 
-      // ===== DATA STORES =====
+     
       {
         "name": "User Database",
         "type": "dataStore",
@@ -43,8 +43,7 @@
         "position": {"x": 500, "y": 500}
       },
 
-      // ===== DATA FLOWS =====
-      // Flows between User and Web Application
+     
       {
         "name": "Login Credentials",
         "type": "flow",
@@ -144,7 +143,7 @@
         "position": null
       },
 
-      // Out-of-Scope Flow (for context)
+     
       {
         "name": "Billing Webhook",
         "type": "flow",
