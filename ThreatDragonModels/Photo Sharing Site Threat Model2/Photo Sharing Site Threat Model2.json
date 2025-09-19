@@ -372,7 +372,7 @@
             "data": {
               "type": "tm.Store",
               "name": "User Database",
-              "description": "",
+              "description": "Database – Stores User data, Credentials and User Metadata ",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -380,9 +380,16 @@
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
-              "storesCredentials": false,
+              "storesCredentials": true,
               "storesInventory": false,
               "threats": []
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -507,13 +514,6 @@
               "storesCredentials": false,
               "storesInventory": false,
               "threats": []
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
