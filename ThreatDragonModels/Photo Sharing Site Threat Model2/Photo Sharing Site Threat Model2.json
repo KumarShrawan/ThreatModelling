@@ -629,8 +629,8 @@
             ],
             "id": "b7b76e11-12ba-4884-b324-d2f91fe0f09f",
             "source": {
-              "x": 510,
-              "y": 110
+              "cell": "de06b6e8-dab7-45b2-bf03-1499262231d2",
+              "port": "a1a34684-439c-412d-8d8b-6fdc30d57c64"
             },
             "target": {
               "cell": "10d55226-0b85-48a7-94bd-f4dc27ad9b4e",
@@ -638,8 +638,59 @@
             },
             "vertices": [
               {
-                "x": 360,
-                "y": 190
+                "x": 320,
+                "y": 110
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "PhotoUploadRequest",
+              "description": "User requests to upload a photo file",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "PhotoUploadRequest"
+            ],
+            "id": "8e2c6960-aae4-4663-b8dc-7cfe5d52c223",
+            "source": {
+              "cell": "10d55226-0b85-48a7-94bd-f4dc27ad9b4e",
+              "port": "f7f822da-f8f8-48b9-b9a5-ed5fee579279"
+            },
+            "target": {
+              "cell": "de06b6e8-dab7-45b2-bf03-1499262231d2",
+              "port": "5209ab35-0f26-4de3-9d91-4d217ee9d1ad"
+            },
+            "vertices": [
+              {
+                "x": 390,
+                "y": 160
               }
             ]
           },
