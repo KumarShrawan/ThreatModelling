@@ -383,13 +383,6 @@
               "storesCredentials": true,
               "storesInventory": false,
               "threats": []
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -535,7 +528,7 @@
             "id": "84052e17-fed1-4ab6-8476-a7abd14b91ac",
             "source": {
               "x": 290,
-              "y": -10
+              "y": -80
             },
             "target": {
               "x": 300,
@@ -544,7 +537,7 @@
             "vertices": [
               {
                 "x": 290,
-                "y": 220
+                "y": 310
               }
             ]
           },
@@ -568,7 +561,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Data Flow",
+              "name": "Login Credentials",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -581,21 +574,27 @@
               "threats": []
             },
             "labels": [
-              "Data Flow"
+              "Login Credentials"
             ],
-            "id": "0bacf16d-d46a-451a-bfe7-2fec19988c14",
+            "id": "ea14a8cf-11af-4454-a232-0cd0102e53ae",
             "source": {
-              "x": 183,
-              "y": 135
+              "x": 130,
+              "y": 130
             },
             "target": {
-              "x": 500,
-              "y": 70
-            }
+              "x": 490,
+              "y": 22
+            },
+            "vertices": [
+              {
+                "x": 180,
+                "y": 22
+              }
+            ]
           },
           {
             "position": {
-              "x": 460,
+              "x": 470,
               "y": 10
             },
             "size": {
@@ -614,6 +613,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 11,
             "ports": {
               "groups": {
                 "top": {
@@ -697,7 +697,6 @@
               ]
             },
             "id": "de06b6e8-dab7-45b2-bf03-1499262231d2",
-            "zIndex": 11,
             "data": {
               "type": "tm.Process",
               "name": "",
