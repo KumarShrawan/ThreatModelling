@@ -1,157 +1,723 @@
 {
-  "$schema": "https://threatdragon.org/schema/v2.5.0/tm.json",
-  "title": "Photo-Sharing Site - Context Diagram",
-  "owner": "Security Team",
-  "description": "High-level DFD for photo upload and retrieval functions. Network assets are out of scope per instructions.",
-  "diagram": {
-    "name": "Level 1 - System Context",
-    "diagramType": "DFD",
-    "elements": [
-     
+  "version": "2.5.0",
+  "summary": {
+    "title": "Photo Sharing Site Threat Model2",
+    "owner": "Shrawan Kumar",
+    "description": "The photo-sharing site allows users to upload and retrieve photos via the Internet. On a high level It consists of the following major components and interactions:\n1.User (external entity): Accesses site through browser/app.\n2.Web Front-End (process): Handles authentication, upload, and retrieval requests.\n3.Photo Storage (data store): Stores large photo files.\n4.Database (data store): Keeps user and photo metadata.\n5.Data Flows: Users upload/download photos (through HTTPS), metadata stored/retrieved from DB, photos stored/retrieved from storage.\n\nTrust Boundaries:\n1.Internet (User ↔ Web Front-End)\n2. Internal network (Web Front-End ↔ DB/Storage)",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [
       {
-        "name": "User",
-        "type": "entity",
-        "description": "An end-user of the photo-sharing service.",
-        "position": {"x": 100, "y": 300}
+        "name": "Aakash Sivashanmugam"
       },
       {
-        "name": "Payment Processor",
-        "type": "entity",
-        "description": "External system handling billing (Out of Scope).",
-        "position": {"x": 1100, "y": 100}
-      },
-
-    
-      {
-        "name": "Web Application",
-        "type": "process",
-        "description": "The main application handling user interactions, authentication, and business logic for photos.",
-        "position": {"x": 500, "y": 300}
-      },
-
-     
-      {
-        "name": "User Database",
-        "type": "dataStore",
-        "description": "Stores user credentials, metadata, and profile information.",
-        "position": {"x": 500, "y": 100}
-      },
-      {
-        "name": "Photo Storage",
-        "type": "dataStore",
-        "description": "Stores the actual image files uploaded by users.",
-        "position": {"x": 500, "y": 500}
-      },
-
-     
-      {
-        "name": "Login Credentials",
-        "type": "flow",
-        "description": "User sends username and password (over HTTPS).",
-        "source": "User",
-        "destination": "Web Application",
-        "position": null
-      },
-      {
-        "name": "Authentication Result",
-        "type": "flow",
-        "description": "Session token or authentication success/failure message.",
-        "source": "Web Application",
-        "destination": "User",
-        "position": null
-      },
-      {
-        "name": "Photo Upload Request",
-        "type": "flow",
-        "description": "User requests to upload a photo file (multipart form data).",
-        "source": "User",
-        "destination": "Web Application",
-        "position": null
-      },
-      {
-        "name": "Upload Result",
-        "type": "flow",
-        "description": "Success or failure confirmation of the upload.",
-        "source": "Web Application",
-        "destination": "User",
-        "position": null
-      },
-      {
-        "name": "Photo Retrieval Request",
-        "type": "flow",
-        "description": "User requests to view or download a photo.",
-        "source": "User",
-        "destination": "Web Application",
-        "position": null
-      },
-      {
-        "name": "Photo Data",
-        "type": "flow",
-        "description": "The requested image file is sent to the user.",
-        "source": "Web Application",
-        "destination": "User",
-        "position": null
-      },
-
-     
-      {
-        "name": "Query Credentials",
-        "type": "flow",
-        "description": "Application queries the DB to validate user login.",
-        "source": "Web Application",
-        "destination": "User Database",
-        "position": null
-      },
-      {
-        "name": "Query Results",
-        "type": "flow",
-        "description": "Database returns the user record (hashed PW, profile data).",
-        "source": "User Database",
-        "destination": "Web Application",
-        "position": null
-      },
-      {
-        "name": "Store Photo Metadata",
-        "type": "flow",
-        "description": "Application saves photo title, description, owner, location, etc.",
-        "source": "Web Application",
-        "destination": "User Database",
-        "position": null
-      },
-      {
-        "name": "Write Image File",
-        "type": "flow",
-        "description": "Application saves the uploaded image bytes to persistent storage.",
-        "source": "Web Application",
-        "destination": "Photo Storage",
-        "position": null
-      },
-      {
-        "name": "Read Image File",
-        "type": "flow",
-        "description": "Application retrieves the image bytes from storage to serve to the user.",
-        "source": "Photo Storage",
-        "destination": "Web Application",
-        "position": null
-      },
-      {
-        "name": "Query Photo Metadata",
-        "type": "flow",
-        "description": "Application queries for the user's photos and their data to display in the gallery.",
-        "source": "Web Application",
-        "destination": "User Database",
-        "position": null
-      },
-
-     
-      {
-        "name": "Billing Webhook",
-        "type": "flow",
-        "description": "Out of Scope: Notification of successful payment.",
-        "source": "Payment Processor",
-        "destination": "Web Application",
-        "position": null
+        "name": "Shrawan Kumar"
       }
-    ]
+    ],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "Photo Sharing Webapp",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.5.0",
+        "cells": [
+          {
+            "position": {
+              "x": 70,
+              "y": 130
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "User"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 1,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "1b9c7f16-c62b-4ad9-b3ea-8031464e71dc"
+                },
+                {
+                  "group": "right",
+                  "id": "f7f822da-f8f8-48b9-b9a5-ed5fee579279"
+                },
+                {
+                  "group": "bottom",
+                  "id": "20f3cd80-a056-4bc4-bbf9-88e0850a3c19"
+                },
+                {
+                  "group": "left",
+                  "id": "f413ab5c-2c44-4da4-bcd9-038f40caed39"
+                }
+              ]
+            },
+            "id": "10d55226-0b85-48a7-94bd-f4dc27ad9b4e",
+            "data": {
+              "type": "tm.Actor",
+              "name": "User",
+              "description": "",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 490,
+              "y": 40
+            },
+            "size": {
+              "width": 70,
+              "height": 70
+            },
+            "attrs": {
+              "text": {
+                "text": "Webserver"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "f02085a8-137a-419c-9e77-79b125d671bd"
+                },
+                {
+                  "group": "right",
+                  "id": "408e08d7-6a29-4450-a4d7-ad30fe3972b8"
+                },
+                {
+                  "group": "bottom",
+                  "id": "7174c93c-9e54-4948-92e3-af41f9dd0690"
+                },
+                {
+                  "group": "left",
+                  "id": "d21ee7a7-0cc5-40c5-91a0-fa933ee1018f"
+                }
+              ]
+            },
+            "id": "20fe98f0-80cc-472c-bf51-58c46e9174b6",
+            "data": {
+              "type": "tm.Process",
+              "name": "Webserver",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 886,
+              "y": 100
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "User Database"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 3,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "6855ff51-69f3-4ebb-9135-8ab8f7b5afe9"
+                },
+                {
+                  "group": "right",
+                  "id": "6be4e64d-15c8-44d3-83bb-1a82ecf58524"
+                },
+                {
+                  "group": "bottom",
+                  "id": "085abe8a-4a4a-423b-bbc5-cd51185b7382"
+                },
+                {
+                  "group": "left",
+                  "id": "3fba20ee-c628-42c9-b8e0-cba64fe1efba"
+                }
+              ]
+            },
+            "id": "2a4a1c0e-8649-4f3f-afcf-6e764c581976",
+            "data": {
+              "type": "tm.Store",
+              "name": "User Database",
+              "description": "Database – Stores User data, Credentials and User Metadata ",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": true,
+              "storesInventory": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 886,
+              "y": 320
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Photo Storage"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 4,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "6855ff51-69f3-4ebb-9135-8ab8f7b5afe9"
+                },
+                {
+                  "group": "right",
+                  "id": "6be4e64d-15c8-44d3-83bb-1a82ecf58524"
+                },
+                {
+                  "group": "bottom",
+                  "id": "085abe8a-4a4a-423b-bbc5-cd51185b7382"
+                },
+                {
+                  "group": "left",
+                  "id": "3fba20ee-c628-42c9-b8e0-cba64fe1efba"
+                }
+              ]
+            },
+            "id": "28f29997-afdf-4f64-b5a1-ddd60b65a6c1",
+            "data": {
+              "type": "tm.Store",
+              "name": "Photo Storage",
+              "description": "High Capacity Disk Array",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Internet Trust Boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "labels": [
+              "Internet Trust Boundary"
+            ],
+            "id": "84052e17-fed1-4ab6-8476-a7abd14b91ac",
+            "source": {
+              "x": 290,
+              "y": -80
+            },
+            "target": {
+              "x": 300,
+              "y": 560
+            },
+            "vertices": [
+              {
+                "x": 290,
+                "y": 310
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Login Credentials",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Login Credentials"
+            ],
+            "id": "ea14a8cf-11af-4454-a232-0cd0102e53ae",
+            "source": {
+              "x": 130,
+              "y": 130
+            },
+            "target": {
+              "x": 490,
+              "y": 22
+            },
+            "vertices": [
+              {
+                "x": 180,
+                "y": 22
+              }
+            ]
+          },
+          {
+            "position": {
+              "x": 470,
+              "y": 10
+            },
+            "size": {
+              "width": 130,
+              "height": 130
+            },
+            "attrs": {
+              "text": {
+                "text": ""
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 11,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "48b30a61-af40-4540-b6d4-e02d4d52ce48"
+                },
+                {
+                  "group": "right",
+                  "id": "e7664906-ca34-454c-8624-e1c10aa4d18e"
+                },
+                {
+                  "group": "bottom",
+                  "id": "5209ab35-0f26-4de3-9d91-4d217ee9d1ad"
+                },
+                {
+                  "group": "left",
+                  "id": "a1a34684-439c-412d-8d8b-6fdc30d57c64"
+                }
+              ]
+            },
+            "id": "de06b6e8-dab7-45b2-bf03-1499262231d2",
+            "data": {
+              "type": "tm.Process",
+              "name": "",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": []
+            }
+          }
+        ],
+        "description": "Photo Sharing Webapp"
+      }
+    ],
+    "diagramTop": 2,
+    "reviewer": "Birhanu Eshete",
+    "threatTop": 0
   }
 }
